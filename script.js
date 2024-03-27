@@ -6,6 +6,9 @@ var body = document.querySelector("body")
 var footer = document.querySelector("footer")
 var items_lefting = document.querySelector(".items_lefting")
 var all = document.querySelector(".all")
+var active = document.querySelector(".active")
+var completed = document.querySelector(".completed")
+var clearcompleted = document.querySelector(".clearcompleted")
 
 input_campo.addEventListener("keydown", () => {
     if (event.key === "Enter") {
@@ -67,18 +70,17 @@ input_campo.addEventListener("keydown", () => {
     excluirfaixa_array.forEach((el => {
         el.addEventListener("click", () => {
             el.parentNode.parentNode.removeChild(el.parentNode)
-
-            var AvoDoEVT = evt.target.parentNode.parentNode.removeChild(evt.target)
         })
     }))
     var check = document.querySelectorAll(".check")
     var check_array = [...check]
+    var texto = document.querySelectorAll(".texto")
     check.forEach((el => {
         el.addEventListener("click", () => {
-            if (el.classList === "check") {
+            if (el.classList == "check") {
                 el.classList.add("checkselecionado")
                 el.nextSibling.classList.add("textocortado")
-            } else {
+            } else if (el.classList == "check checkselecionado") {
                 el.classList.remove("checkselecionado")
                 el.nextSibling.classList.remove("textocortado")
             }
@@ -89,12 +91,51 @@ input_campo.addEventListener("keydown", () => {
     var faixa = document.querySelectorAll(".faixa")
     all.addEventListener("click", () => {
         all.classList.add("all_selecionado")
+        active.classList.remove("all_selecionado")
+        completed.classList.remove("all_selecionado")
         if (all.classList.contains("all_selecionado") == true) {
-            faixa.forEach((el => {
-                el.classList.toggle("faixaSelecionada")
+            check.forEach((el => {
+                el.parentElement.classList.remove("esconderFaixa_somenteAtivos")
             }))
-            items_lefting.innerHTML = ` ${faixa.length + 1} Items selecionados`
+            items_lefting.innerHTML = ` ${faixa.length} Items selecionados`
         }
+    })
+    active.addEventListener("click", () => {
+        active.classList.add("all_selecionado")
+        all.classList.remove("all_selecionado")
+        completed.classList.remove("all_selecionado")
+        if (active.classList.contains("all_selecionado") == true) {
+            // all.classList.remove("all_selecionado")
+            check.forEach((el => {
+                if (el.classList == "check checkselecionado") {
+                    el.parentElement.classList.add("esconderFaixa_somenteAtivos")
+                } else if (el.classList == "check") {
+                    el.parentElement.classList.remove("esconderFaixa_somenteAtivos")
+                }
+            }))
+            items_lefting.innerHTML = ` ${faixa.length} Items selecionados`
+        }
+    })
+    completed.addEventListener("click", () => {
+        completed.classList.add("all_selecionado")
+        active.classList.remove("all_selecionado")
+        all.classList.remove("all_selecionado")
+        if (completed.classList.contains("all_selecionado") == true) {
+            check.forEach((el => {
+                if (el.classList == "check") {
+                    el.parentElement.classList.add("esconderFaixa_somenteAtivos")
+                } else if (el.classList == "check checkselecionado") {
+                    el.parentElement.classList.remove("esconderFaixa_somenteAtivos")
+                }
+            }))
+        }
+    })
+    clearcompleted.addEventListener("click", () => {
+        check.forEach((el => {
+            if (el.classList.contains("checkselecionado") == true) {
+                el.parentElement.classList.add("apagarfaixa_clearcompleted")
+            }
+        }))
     })
 
 
@@ -130,17 +171,3 @@ input_campo.addEventListener("keydown", () => {
     })
 }
 )
-
-// var resultado_array_final = resultado.childNodes
-
-
-// all.addEventListener("click", () => {
-//     all.classList.toggle("all_selecionado")
-//     if (all.classList.contains("all_selecionado") == true) {
-//         faixa.classList.add("faixaSelecionada")
-
-//     } else {
-//         console.log("erro")
-//         console.log(resultado_array_final)
-//     }
-// })
