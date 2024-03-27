@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url(images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-color: hsl(235, 21%, 11%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodyclean {
+    min-height: 100vh;
+    background-image: url(images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-color: hsl(0, 0%, 98%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-top: 50px;
+    min-height: 500px;
+    margin-bottom: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    color: white;
+}
+
+.campo {
+    width: 500px;
+    margin-bottom: 30px;
+}
+
+.input_campo {
+    width: 500px;
+    padding: 10px 5px 10px 30px;
+    background-color: hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+    border-radius: 5px 5px 5px 5px;
+    border: none;
+}
+
+.input_campo_clear {
+    background-color: hsl(234, 39%, 85%);
+    color: hsl(235, 24%, 19%);
+}
+
+.check {
+    border: 1px solid hsl(234, 11%, 52%);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto {
+    cursor: pointer;
+}
+
+.resultado {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 10px 10px 100px rgba(0, 0, 0, 0.4);
+}
+
+.faixa {
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    padding: 10px 30px 10px 30px;
+    background-color: hsl(235, 24%, 19%);
+    color: hsl(234, 39%, 85%);
+    justify-content: space-between;
+    text-align: left;
+    border-bottom: 1px solid hsla(234, 39%, 85%, 0.388);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.faixaclean {
+    background-color: hsl(236, 33%, 92%);
+    color: hsl(237, 14%, 26%);
+}
+
+footer {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 30px 10px 30px;
+    background-color: hsl(235, 24%, 19%);
+    color: hsl(234, 11%, 52%);
+    border-radius: 0 0 5px 5px;
+}
+
+.footer_clean {
+    background-color: hsl(236, 33%, 92%);
+    color: hsl(234, 11%, 52%);
+}
+
+.all,
+.active,
+.completed,
+.clearcompleted {
+    cursor: pointer;
+}
+
+.all:hover,
+.active:hover,
+.completed:hover,
+.clearcompleted:hover {
+    color: hsl(236, 33%, 92%);
+}
+
+.excluirfaixa {
+    visibility: hidden;
+}
+
+.excluirfaixaclean {
+    color: hsl(237, 14%, 26%);
+}
+
+.faixaSelecionada {
+    border: 1px solid hsla(280, 87%, 65%, 0.489);
+}
+
+.checkselecionado {
+    background-image: url(images/icon-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.textocortado {
+    text-decoration: line-through;
+}
+
+.all_selecionado {
+    color: blue;
+}
